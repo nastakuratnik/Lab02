@@ -1,38 +1,34 @@
-#Задача 1: Найти наименьший нечётный элемент списка
+# Задача 1: Проверка на повторяющиеся элементы с выводом индексов
 
-nums = [12, 7, 9, 4, 6, 11, 8, 3]
+arr1 = [3, 5, 7, 3, 9, 5, 1, 7, 4]
 
-print("Список чисел:", nums)
+found = {}
+duplicates = {}
 
-# Ищем нечётные числа
-odds = []
-for n in nums:
-    if n % 2 != 0:
-        odds.append(n)
+for i, num in enumerate(arr1):
+    if num in found:
+        if num not in duplicates:
+            duplicates[num] = [found[num]]
+        duplicates[num].append(i)
+    else:
+        found[num] = i
 
-# Находим минимальное среди нечётных
-if odds:
-    min_odd = odds[0]
-    for num in odds:
-        if num < min_odd:
-            min_odd = num
-    print("Наименьший нечётный элемент:", min_odd)
+if duplicates:
+    print("Повторяющиеся элементы и их индексы:")
+    for val, idx_list in duplicates.items():
+        print(f"Элемент {val} найден на индексах {idx_list}")
 else:
-    print("Нечётных элементов в списке нет.")
+    print("Повторяющихся элементов нет.")
 
-print()  # пустая строка для разделения вывода
+print("\n" + "-"*30 + "\n")
 
-#Задача 2: Обмен значениями массивов A и B
+# Задача 2: Замена элементов меньше 15 на удвоенные значения
 
-A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-B = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+arr2 = [12, 20, 5, 17, 8, 25, 14, 15]
 
-print("Массив A до обмена:", A)
-print("Массив B до обмена:", B)
+for i in range(len(arr2)):
+    if arr2[i] < 15:
+        arr2[i] = arr2[i] * 2
 
-# Меняем местами элементы
-for i in range(10):
-    A[i], B[i] = B[i], A[i]
-
-print("\nМассив A после обмена:", A)
-print("Массив B после обмена:", B)
+print("Преобразованный массив:")
+print(arr2)

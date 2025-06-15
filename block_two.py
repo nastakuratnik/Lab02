@@ -1,36 +1,35 @@
-import math
+# Задача 1: Средняя плотность населения по области
 
-# Задание 1: Средняя оценка по физике в двух классах
+population = []
+area = []
 
-# Ввод количества учеников
-n = int(input("Введите количество учеников в каждом классе: "))
+print("Введите данные для 12 районов:")
 
-# Ввод оценок первого класса
-print("\nВведите оценки по физике для учеников первого класса:")
-class1 = []
-for i in range(n):
-    mark = int(input(f"Ученик {i + 1}: "))
-    class1.append(mark)
+for i in range(12):
+    p = float(input(f"Количество жителей в районе {i+1} (тыс. чел.): "))
+    a = float(input(f"Площадь района {i+1} (км2): "))
+    population.append(p)
+    area.append(a)
 
-# Ввод оценок второго класса
-print("\nВведите оценки по физике для учеников второго класса:")
-class2 = []
-for i in range(n):
-    mark = int(input(f"Ученик {i + 1}: "))
-    class2.append(mark)
+total_population = 0
+total_area = 0
 
-# Расчёт средней оценки
-average1 = sum(class1) / n
-average2 = sum(class2) / n
+for i in range(12):
+    total_population += population[i]
+    total_area += area[i]
 
-# Вывод результатов
-print(f"\nСредняя оценка в первом классе: {average1:.2f}")
-print(f"Средняя оценка во втором классе: {average2:.2f}")
+average_density = total_population / total_area
 
-#Задание 2: Степени числа 2 от 0 до 20
+print(f"\nСредняя плотность населения по области: {average_density:.2f} тыс. чел./км²")
 
-print("\nСтепени числа 2 от 0 до 20:")
-i = 0
-while i <= 20:
-    print(f"2^{i} = {2**i}")
-    i += 1
+
+# Задача 2: Когда подарок дяди превысит 100$
+
+age = 1
+gift = 1
+
+while gift <= 100:
+    age += 1
+    gift = gift * 2 + age
+
+print(f"\nПодарок превысит 100$ на {age}-й день рождения.")

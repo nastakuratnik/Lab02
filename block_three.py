@@ -1,11 +1,10 @@
-# Ввод строки от пользователя
-text = input("Введите строку: ")
+text = input("Введите строку с одной парой скобок: ")
 
-# Разделение строки на слова
-words = text.split()
+start = text.find('(')
+end = text.find(')')
 
-# Поиск и вывод слов, оканчивающихся на букву "я"
-print("\nСлова, оканчивающиеся на букву 'я':")
-for word in words:
-    if word.lower().endswith('я'):
-        print(word)
+if start != -1 and end != -1 and start < end:
+    inside = text[start+1:end]
+    print("Символы внутри скобок:", inside)
+else:
+    print("В строке нет корректной пары скобок.")
